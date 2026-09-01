@@ -1,0 +1,21 @@
+{
+  "name": "book-management-api",
+  "version": "1.0.0",
+  "description": "A lightweight RESTful API for Book Management built with Node.js, Express.js, and in-memory storage.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "nodejs",
+    "express",
+    "rest-api",
+    "crud",
+    "book-management"
+  ],
+  "author": "Darshan Makwana",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}
