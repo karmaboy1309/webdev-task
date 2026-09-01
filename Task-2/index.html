@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="TaskFlow is a clean, modern, and responsive To-Do List web application built with Vanilla HTML5, CSS3, and JavaScript.">
+  <title>TaskFlow — Modern To-Do List Web App</title>
+  <!-- Google Fonts: Plus Jakarta Sans for modern, clean typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Main Application Container -->
+  <main class="app-container">
+    
+    <!-- App Header -->
+    <header class="app-header">
+      <div class="logo-icon" aria-hidden="true">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M9 11l3 3L22 4"></path>
+          <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path>
+        </svg>
+      </div>
+      <h1 class="app-title">TaskFlow</h1>
+      <p class="app-subtitle">Stay organized, focused, and achieve your daily goals.</p>
+    </header>
+
+    <!-- Stats Dashboard -->
+    <section class="stats-card" aria-label="Task Statistics">
+      <div class="stat-item">
+        <span class="stat-value" id="total-count">0</span>
+        <span class="stat-label">Total Tasks</span>
+      </div>
+      <div class="stat-divider" aria-hidden="true"></div>
+      <div class="stat-item">
+        <span class="stat-value stat-completed" id="completed-count">0</span>
+        <span class="stat-label">Completed</span>
+      </div>
+      <div class="stat-divider" aria-hidden="true"></div>
+      <div class="stat-item">
+        <span class="stat-value stat-remaining" id="remaining-count">0</span>
+        <span class="stat-label">Remaining</span>
+      </div>
+    </section>
+
+    <!-- Task Input Form -->
+    <section class="input-section">
+      <form id="todo-form" class="todo-form" novalidate>
+        <div class="input-wrapper">
+          <input 
+            type="text" 
+            id="task-input" 
+            class="task-input" 
+            placeholder="Enter a new task..." 
+            autocomplete="off"
+            aria-label="New task description"
+            maxlength="150"
+          >
+          <button type="submit" id="add-task-btn" class="btn btn-primary">
+            <svg class="btn-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+            <span>Add Task</span>
+          </button>
+        </div>
+        <!-- Inline Validation Error Message -->
+        <p id="input-error" class="input-error-msg" role="alert" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <!-- Filter Toolbar & Action Controls -->
+    <section class="task-toolbar" aria-label="Task controls and filters">
+      <div class="filter-group" role="tablist" aria-label="Filter tasks">
+        <button type="button" class="filter-btn active" data-filter="all" role="tab" aria-selected="true">All</button>
+        <button type="button" class="filter-btn" data-filter="active" role="tab" aria-selected="false">Active</button>
+        <button type="button" class="filter-btn" data-filter="completed" role="tab" aria-selected="false">Completed</button>
+      </div>
+
+      <button type="button" id="clear-completed-btn" class="btn btn-secondary" title="Remove all completed tasks" disabled>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="3 6 5 6 21 6"></polyline>
+          <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+        </svg>
+        <span>Clear Completed</span>
+      </button>
+    </section>
+
+    <!-- Task List Container -->
+    <section class="list-section">
+      <ul id="task-list" class="task-list" aria-label="List of tasks">
+        <!-- Dynamic task items (li) will be added here by JavaScript -->
+      </ul>
+
+      <!-- Empty State Indicator -->
+      <div id="empty-state" class="empty-state">
+        <div class="empty-icon" aria-hidden="true">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+          </svg>
+        </div>
+        <h2 class="empty-title">No tasks found</h2>
+        <p class="empty-text">Add a new task above to start organizing your day!</p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <p>TaskFlow &bull; Built with HTML5, CSS3 &amp; Vanilla JavaScript</p>
+      <p class="author-tag">Internship Task by <strong>Darshan Makwana</strong></p>
+    </footer>
+
+  </main>
+
+  <!-- JavaScript File -->
+  <script src="script.js"></script>
+</body>
+</html>
