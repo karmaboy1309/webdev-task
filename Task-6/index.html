@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ConnectDesk - Modern Contact Form with Client-Side JavaScript and Regex Validation (Task 6).">
+  <title>ConnectDesk | Contact Form & JavaScript Validation (Task 6)</title>
+
+  <!-- Google Fonts: Plus Jakarta Sans & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header / Navigation Bar -->
+  <header class="form-header">
+    <div class="container header-inner">
+      <a href="../index.html" class="brand-link">
+        <svg class="brand-icon" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+        </svg>
+        <span class="brand-text">Connect<span>Desk</span></span>
+      </a>
+      <span class="badge-task">Task 06 • JS Validation</span>
+    </div>
+  </header>
+
+  <main class="main-wrapper">
+    <div class="container">
+      <div class="form-layout">
+        <!-- Information Column (Left) -->
+        <aside class="info-column">
+          <div class="info-content">
+            <span class="info-tag">Get in Touch</span>
+            <h1 class="info-title">Let's Discuss Your Next Great Project</h1>
+            <p class="info-desc">
+              Have an inquiry or seeking collaboration? Fill out the contact form with your details, and our engineering team will respond within 24 hours.
+            </p>
+
+            <div class="contact-methods">
+              <div class="method-item">
+                <div class="method-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                  </svg>
+                </div>
+                <div>
+                  <span class="method-label">Direct Email</span>
+                  <strong class="method-val">darshanmakwana1305@gmail.com</strong>
+                </div>
+              </div>
+
+              <div class="method-item">
+                <div class="method-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                  </svg>
+                </div>
+                <div>
+                  <span class="method-label">Location</span>
+                  <strong class="method-val">Ahmedabad, Gujarat, India</strong>
+                </div>
+              </div>
+
+              <div class="method-item">
+                <div class="method-icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                </div>
+                <div>
+                  <span class="method-label">Response Time</span>
+                  <strong class="method-val">Within 24 Hours SLA</strong>
+                </div>
+              </div>
+            </div>
+
+            <!-- Features Highlights -->
+            <div class="validation-features">
+              <h4 class="features-heading">Client-Side Validation Features:</h4>
+              <ul class="features-list">
+                <li>✔ RFC 5322 Compliant Email Regex</li>
+                <li>✔ Real-Time Input Sanitization & Trim</li>
+                <li>✔ Live Dynamic Character Counter</li>
+                <li>✔ WCAG Accessible ARIA Alert Announcements</li>
+              </ul>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Form Column (Right) -->
+        <div class="form-column">
+          <div class="form-card" id="formCard">
+            <div class="form-card-header">
+              <h2 class="form-title">Send a Message</h2>
+              <p class="form-subtitle">All fields marked with <span class="required-star">*</span> are mandatory.</p>
+            </div>
+
+            <!-- Contact Form -->
+            <form id="contactForm" class="contact-form" novalidate>
+              <!-- Full Name Field -->
+              <div class="form-group" id="group-name">
+                <label for="fullName" class="form-label">
+                  Full Name <span class="required-star">*</span>
+                </label>
+                <div class="input-wrapper">
+                  <input
+                    type="text"
+                    id="fullName"
+                    name="fullName"
+                    class="form-control"
+                    placeholder="e.g. Darshan Makwana"
+                    autocomplete="name"
+                    aria-required="true"
+                    aria-describedby="nameError"
+                  >
+                  <span class="validation-icon" aria-hidden="true"></span>
+                </div>
+                <span class="error-message" id="nameError" role="alert" aria-live="polite"></span>
+              </div>
+
+              <!-- Email Field -->
+              <div class="form-group" id="group-email">
+                <label for="email" class="form-label">
+                  Email Address <span class="required-star">*</span>
+                </label>
+                <div class="input-wrapper">
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    class="form-control"
+                    placeholder="e.g. name@domain.com"
+                    autocomplete="email"
+                    aria-required="true"
+                    aria-describedby="emailError"
+                  >
+                  <span class="validation-icon" aria-hidden="true"></span>
+                </div>
+                <span class="error-message" id="emailError" role="alert" aria-live="polite"></span>
+              </div>
+
+              <!-- Subject / Topic Dropdown -->
+              <div class="form-group" id="group-subject">
+                <label for="subject" class="form-label">
+                  Subject / Topic <span class="required-star">*</span>
+                </label>
+                <div class="input-wrapper">
+                  <select
+                    id="subject"
+                    name="subject"
+                    class="form-control form-select"
+                    aria-required="true"
+                    aria-describedby="subjectError"
+                  >
+                    <option value="" disabled selected>Select an inquiry category...</option>
+                    <option value="internship">Internship / Job Inquiry</option>
+                    <option value="project">Web Development Collaboration</option>
+                    <option value="api">Backend & API Consultation</option>
+                    <option value="feedback">General Feedback & Review</option>
+                  </select>
+                  <span class="validation-icon" aria-hidden="true"></span>
+                </div>
+                <span class="error-message" id="subjectError" role="alert" aria-live="polite"></span>
+              </div>
+
+              <!-- Message Field -->
+              <div class="form-group" id="group-message">
+                <div class="label-with-counter">
+                  <label for="message" class="form-label">
+                    Message <span class="required-star">*</span>
+                  </label>
+                  <span class="char-counter" id="charCounter" aria-live="polite">0 / 500</span>
+                </div>
+                <div class="input-wrapper">
+                  <textarea
+                    id="message"
+                    name="message"
+                    class="form-control form-textarea"
+                    rows="4"
+                    maxlength="500"
+                    placeholder="Write your message here (minimum 10 characters)..."
+                    aria-required="true"
+                    aria-describedby="messageError"
+                  ></textarea>
+                </div>
+                <span class="error-message" id="messageError" role="alert" aria-live="polite"></span>
+              </div>
+
+              <!-- Privacy Policy Checkbox -->
+              <div class="form-group-checkbox" id="group-consent">
+                <label class="checkbox-container">
+                  <input
+                    type="checkbox"
+                    id="consent"
+                    name="consent"
+                    aria-required="true"
+                    aria-describedby="consentError"
+                  >
+                  <span class="checkmark"></span>
+                  <span class="checkbox-label">
+                    I agree to the processing of my contact information for correspondence. <span class="required-star">*</span>
+                  </span>
+                </label>
+                <span class="error-message" id="consentError" role="alert" aria-live="polite"></span>
+              </div>
+
+              <!-- Form Action Buttons -->
+              <div class="form-actions">
+                <button type="submit" id="submitBtn" class="btn btn-submit">
+                  <span class="btn-text">Send Message</span>
+                  <span class="btn-spinner" aria-hidden="true"></span>
+                </button>
+                <button type="reset" id="resetBtn" class="btn btn-reset">
+                  Reset Form
+                </button>
+              </div>
+            </form>
+
+            <!-- Success Confirmation Modal / Card (Hidden by Default) -->
+            <div id="successModal" class="success-card" role="region" aria-label="Submission confirmation" hidden>
+              <div class="success-icon-wrap">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                  <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
+              </div>
+              <h3 class="success-title">Message Sent Successfully!</h3>
+              <p class="success-desc">
+                Thank you for contacting us. Your message has passed all client-side validations and was processed successfully.
+              </p>
+              <div class="submission-summary">
+                <div class="summary-row">
+                  <span>Name:</span> <strong id="summaryName">—</strong>
+                </div>
+                <div class="summary-row">
+                  <span>Email:</span> <strong id="summaryEmail">—</strong>
+                </div>
+                <div class="summary-row">
+                  <span>Subject:</span> <strong id="summarySubject">—</strong>
+                </div>
+                <div class="summary-row">
+                  <span>Timestamp:</span> <strong id="summaryTime">—</strong>
+                </div>
+              </div>
+              <button type="button" id="newSubmissionBtn" class="btn btn-primary btn-block">
+                Send Another Message
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="form-footer">
+    <div class="container">
+      <p>&copy; 2026 <strong>Darshan Makwana</strong>. Web Development Internship — Task 6 (Contact Form & JS Validation).</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
